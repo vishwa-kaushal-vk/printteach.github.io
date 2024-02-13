@@ -42,7 +42,7 @@ a:hover {
 }
 
 .navigation {
-  background: #fff;
+  background: #bee3f1;
   padding: 20px 0;
 }
 .navigation .navbar {
@@ -82,7 +82,7 @@ a:hover {
   transition: all 0.3s ease;
 }
 .navigation .navbar .dropdown-menu a:hover {
-  background: #f8363a;
+  background: #655E7A;
   color: #fff;
   padding-left: 25px;
 }
@@ -164,7 +164,7 @@ a:hover {
 }
 .call-to-action-landing .btn-blue {
   color: #fff;
-  background: #f8363a;
+  background: #655E7A;
 }
 .call-to-action-landing .btn-gray {
   background: #2E7EED;
