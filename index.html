@@ -41,7 +41,97 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3488214634859413"
      crossorigin="anonymous"></script>
 
+<!-- Custom CSS for Flying Santa -->
+ <style>
+    /* 1. The Container: Holds the banner and the animation area */
+    .banner-container {
+        position: relative;
+        width: 100%;
+        max-width: 1920px; /* Optional: Limits max width for huge screens */
+        margin: 0 auto;
+        overflow: hidden; /* CRITICAL: Hides Santa when he flies off screen */
+    }
 
+    /* 2. The Banner Image (Your F600 Image) */
+    .banner-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* 3. The Live Santa Sleigh */
+    .santa-sleigh {
+        position: absolute;
+        z-index: 10;
+        width: 15%; /* Responsive size: takes up 15% of banner width */
+        min-width: 120px; /* Ensures he doesn't get too small on phones */
+        
+        /* The "Live" Animation settings */
+        /* name | duration | timing-function | delay | iteration-count */
+        animation: liveFlight 12s ease-in-out infinite;
+        
+        /* Start position (off-screen left) */
+        left: -20%;
+        top: 20%;
+    }
+
+    /* 4. The Complex Flight Path Animation */
+    @keyframes liveFlight {
+        0% {
+            left: -20%;
+            top: 10%;
+            transform: scale(0.8) rotate(0deg); /* Far away */
+        }
+        20% {
+            top: 40%;
+            transform: scale(0.9) rotate(5deg); /* Diving down */
+        }
+        40% {
+            top: 20%;
+            transform: scale(1.0) rotate(-5deg); /* Climbing up */
+        }
+        60% {
+            top: 60%;
+            transform: scale(1.1) rotate(10deg); /* Swooping low & close */
+        }
+        80% {
+            top: 30%;
+            transform: scale(1.0) rotate(-5deg); /* Climbing back */
+        }
+        100% {
+            left: 110%; /* Fly off screen right */
+            top: 15%;
+            transform: scale(0.8) rotate(0deg); /* Far away again */
+        }
+    }
+
+    /* UPDATED SNOW STYLE */
+#snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; 
+        z-index: 9999; 
+    }
+
+    .snowflake {
+        position: absolute;
+        top: -50px; /* Start higher up so large flakes don't "pop" in */
+        color: #c0e3e8; /* "Powder Blue" - visible but soft */
+        font-weight: bold;
+        opacity: 0.8; /* Slightly see-through so they don't block text */
+        user-select: none;
+        animation: fall linear infinite;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Soft shadow for depth */
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) translateX(20px) rotate(360deg); opacity: 0.3; }
+    }
+</style>
 
 </head>
 
@@ -78,7 +168,6 @@
 
                     <ul class="dropdown-menu" aria-labelledby="dropdown0301">
                       <li><a class="dropdown-item" href="fastjet.html">FastJet</a></li>
-                      <li><a class="dropdown-item" href="videojet.html">Vj</a></li>
                     </ul>
                   </li>
                   <li><a class="dropdown-item @@ttoprinters" href="ttoprinters.html">TTO Printers</a></li>
@@ -117,45 +206,94 @@
 </header><!-- header close -->
 
 
+<!-- Wrapper Start -->
+<div class="banner-container">
+        <img src="images/snowwebbanner.png" alt="Print Teach Christmas Banner" class="banner-img">
+        
+        <img src="https://i.ibb.co/WpWfQ8Qc/b0c5ff16b008f7bf1b6c33f8377973c4-removebg-preview.png" 
+             alt="Santa Sleigh" 
+             class="santa-sleigh">
+    </div>
+
+    
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const snowContainer = document.getElementById("snow-container");
+        
+        // Safety check: Create container if missing
+        if (!snowContainer) {
+            const newDiv = document.createElement("div");
+            newDiv.id = "snow-container";
+            document.body.appendChild(newDiv);
+        }
+
+        const snowflakeCount = 40; // Slightly fewer flakes since they are bigger
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const flake = document.createElement("div");
+            flake.classList.add("snowflake");
+            flake.innerHTML = "❄"; 
+            
+            // Random positions
+            flake.style.left = Math.random() * 100 + "vw";
+            
+            // --- THIS CONTROLS THE SIZE ---
+            // Random size between 20px and 50px
+            flake.style.fontSize = (Math.random() * 30 + 20) + "px"; 
+            
+            // Random speed
+            flake.style.animationDuration = Math.random() * 3 + 3 + "s"; 
+            flake.style.animationDelay = Math.random() * 5 + "s"; 
+            
+            document.getElementById("snow-container").appendChild(flake);
+        }
+    });
+</script>
+
+ <!--
+ <img src="images/ptwebbanner.png" alt="fjbanner" width ="100%" height="auto">-->
+ 
+ <section class="about section">
+	<div class="container">
+		<div class="row">
+      			<div class="col-md-5">
+				<div class="block">
+					<img src="images/printer/fastjet/f660/scaled-removebg-preview.png" alt="Img">
+				</div>
+			</div> 
+			<div class="col-md-7">
+				<div class="block">
+					<div class="section-title" align="center">
+            <h1>F600</h1>
+						<h5> Special Offers for FastJet Inkjet Printers</h5>
+            <p>Importers, Distributors and Service Suppliers of <br> Industrial Inkjet Printer's Spare Parts, Ink, Makeup and Inkjet Printers</p>
+					<div class="slider-btn">
+            <a href="printers/f600.html" class="btn btn-main animated fadeInUp" > NEW Released F600 Series </a>
+				</div>
+					</div>
+					</div>
+			</div> 
+		</div>
+	</div>
+</section>
+
+
 <!-- Slider Start -->
 <section class="slider">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+      <div class="col-md-12">
 				<div class="block">
-					<h1 class="animated fadeInUp">A Better Solution <br> for <br> industrial Coding...</h1>
-          <h4 class="animated fadeInUp">Indutrial Coding Machine Supplier in Sri Lanka</h4>
+					<h1 class="animated fadeInUp">Industrial Inkjet Printers, Spare Parts, Ink, 
+        Makeup  <br> for <br> industrial Coding...</h1>
+          <h4 class="animated fadeInUp">Industrial Coding Machine Supplier in Sri Lanka</h4>
           <div class="slider-btn">
-					<p class="animated fadeInUp">Industrial Inkjet Printer's Spare Parts, Ink, Makeup and Inkjet Printers <br> Importers, Distributors and Service Suppliers  <br> In Sri Lanka</p>
-					<a href="product.html" class="btn btn-main animated fadeInUp" > Search for items</a>
+            <a href="product.html" class="btn btn-main animated fadeInUp" > Search for items</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-  
-
-<!-- Wrapper Start 
-<section class="about section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7">
-				<div class="block">
-					<div class="section-title" align="center">
-            <h1></h1>
-					<p> New Beginings..</p>	
-					</div>
-					</div>
-			</div> 
-			<div class="col-md-5">
-				<div class="block">
-					<img src="https://i.ibb.co/tcvsZ2Q/2025newyear.png" alt="2025newyear" border="0">
-					
-				</div>
-			</div>  col-md-5 close
-		</div>
-	</div>
-</section>-->
 
 <div class="slides slowFade">
   <div class="slide">
@@ -194,7 +332,7 @@
 			<div class="col-md-12">
 				<div class="block">
 					<h2 class="mb-3">We serve delightful Industrial experiences.</h2>
-					<p>Importers, Distributors and Service Suppliers of <br> Industrial Inkjet Printer's Spare Parts, Ink, Makeup and Inkjet Printers</p>
+					<p>Importers, Distributors and Service Suppliers of <br> Industrial Inkjet Printers, Spare Parts, Ink, Makeup </p>
 					<a class="btn btn-main btn-solid-border" href="contact.html">Join with Us</a>
 				</div>
 			</div>
@@ -250,9 +388,9 @@
         </div>
       </div>
       <div class="col-md-5 col-md-offset-1">
-        <div class="testimonial-carousel text-center">-->
-          <!--<div class="testimonial-slider owl-carousel">-->
-           <!--  <div>
+        <div class="testimonial-carousel text-center">
+          <div class="testimonial-slider owl-carousel">
+           <div>
               <i class="ion-quote"></i>
               <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative
                 ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
@@ -293,7 +431,7 @@
       </div>
     </div>
   </div>
-</section>-->
+</section> -->
 
 
 
